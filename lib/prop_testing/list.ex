@@ -4,22 +4,11 @@ defmodule PropTesting.List do
   """
   @spec delete(list(), any()) :: list()
   def delete(list, elem) do
+    # list -- [elem]
     for x <- list, x != elem do
       x
     end
   end
-
-
-
-
-
-
-
-
-
-
-
-
 
   @doc """
   Unwraps deep lists
@@ -28,6 +17,7 @@ defmodule PropTesting.List do
   def flatten(list) do
     Enum.reduce(list, [], fn elem, acc ->
       if is_list(elem) do
+        # acc ++ elem
         acc ++ flatten(elem)
       else
         acc ++ [elem]
